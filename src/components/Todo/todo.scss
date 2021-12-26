@@ -1,0 +1,29 @@
+.todo {
+	margin: 20px auto;
+
+	&__button {
+		text-align: center;
+
+		&-btn {
+			padding: 7px 5px;
+			cursor: pointer;
+		}
+	}
+	&__list {
+		margin: 20px auto;
+		border-top: 1px solid;
+		width: 500px;
+		&-item {
+			display: flex;
+			flex: 1;
+			justify-content: space-between;
+			align-items: center;
+			padding: 5px 8px 5px 8px;
+			border-bottom: 1px solid;
+			&-title {
+				flex: 1;
+				padding: 0 10px;
+			}
+		}
+	}
+}
