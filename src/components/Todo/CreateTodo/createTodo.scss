@@ -8,6 +8,7 @@
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
+	background: rgba(0, 0, 0, 0.6);
 	&__close {
 		position: absolute;
 		width: 50px;
@@ -19,8 +20,9 @@
 		right: 5px;
 		cursor: pointer;
 		border-radius: 15px;
+		background: white;
 		&:hover {
-			background: #ffff;
+			color: red;
 		}
 	}
 	&__input {
