@@ -5,8 +5,11 @@ interface ITodos {
 	title: string;
 	completed: boolean;
 }
+type TitleOrId = string;
 class TodoStore {
 	todos: ITodos[] = [];
+	title: TitleOrId = '';
+	userId: TitleOrId = '';
 	constructor() {
 		makeAutoObservable(this);
 	}
@@ -15,8 +18,15 @@ class TodoStore {
 		this.todos.push(todo);
 	}
 
+	changeTitle(title: TitleOrId) {
+		this.title = title;
+	}
+	changeUserId(userId: TitleOrId) {
+		this.userId = userId;
+	}
+
 	deleteTodo(id: number) {
-		this.todos.filter((todo) => todo.id !== id);
+		this.todos = this.todos.filter((todo) => todo.id !== id);
 	}
 
 	completedTodo(id: number) {
