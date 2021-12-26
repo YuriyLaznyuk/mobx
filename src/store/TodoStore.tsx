@@ -10,6 +10,8 @@ class TodoStore {
 	todos: ITodos[] = [];
 	title: TitleOrId = '';
 	userId: TitleOrId = '';
+	error: TitleOrId = '';
+	loading: TitleOrId = '';
 	constructor() {
 		makeAutoObservable(this);
 	}
@@ -36,9 +38,19 @@ class TodoStore {
 	}
 
 	fetchTodos = async () => {
-		const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-		const json = await response.json();
-		this.todos = [...this.todos, ...json];
+		try {
+			this.loading = '...Loading';
+			const response = await fetch(
+				'https://jsonplaceholder.typicode.com/todos',
+			);
+			const json = await response.json();
+			this.todos = [...this.todos, ...json];
+			this.loading = '';
+		} catch (e) {
+			this.loading = '';
+			this.error = 'Error loading';
+			console.log(e);
+		}
 	};
 }
 export default new TodoStore();

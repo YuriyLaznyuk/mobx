@@ -23,12 +23,21 @@ const Todo = observer(() => {
 				</button>
 			</div>
 			<div className='todo__list'>
+				{todo.error}
+				{todo.loading}
 				{todo.todos.map((item) => (
 					<div className='todo__list-item' key={item.id}>
 						<div className='todo__list-item-title'>{item.id}</div>
 						<div className='todo__list-item-title'>{item.title}</div>
 						<div className='todo__list-item-title'>
 							{item.completed ? 'completed' : 'no completed'}
+						</div>
+						<div className='todo__list-item-title'>
+							<input
+								type='checkbox'
+								checked={item.completed}
+								onChange={() => todo.completedTodo(item.id)}
+							/>
 						</div>
 						<div className='todo__list-item-title'>
 							<button
